@@ -1,7 +1,7 @@
 //
 //  DigitEntryView.swift
 //
-//  Copyright (c) 2020 MO4 Network (https://github.com/mo4tech)
+//  Copyright (c) 2020 Amr Mohamed (https://github.com/iAmrMohamed)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
