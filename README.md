@@ -6,10 +6,10 @@ Simple iOS digit input field for OTP codes
 ### Installation
 DigitEntryView is currently available either manually by cloning the project and adding `DigitEntryView.swift`  to your project, or you can use the Swift Package Manager (SPM).
 
-1- In Xcode, click File > Swift Packages > Add Package Dependency.
-2- In the dialog that appears, enter the repository URL: https://github.com/iAmrMohamed/DigitEntryView.git
-3- In Version, select Up to Next Major and take the default option.
-4- Click Next and select the library `DigitEntryView` checkbox, then click Finish and your're all set. 
+- In Xcode, click File > Swift Packages > Add Package Dependency.
+- In the dialog that appears, enter the repository URL: https://github.com/iAmrMohamed/DigitEntryView.git
+- In Version, select Up to Next Major and take the default option.
+- Click Next and select the library `DigitEntryView` checkbox, then click Finish and your're all set. 
 
 ### Requirements
 - Requires iOS 9.0+
