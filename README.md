@@ -1,6 +1,7 @@
 # DigitEntryView
 Simple iOS digit input field for OTP codes
 
+![](Resources/corner_style.png)
 
 ### Installation
 DigitEntryView is currently available either manually by cloning the project and adding `DigitEntryView.swift`  to your project, or you can use the Swift Package Manager (SPM).
