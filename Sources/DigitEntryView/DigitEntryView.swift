@@ -83,9 +83,9 @@ public class DigitEntryView: UIView {
     }
     
     /// isSecureEntity
-    public var isSecureEntity: Bool = false {
+    public var isSecureDigitEntry: Bool = false {
         didSet {
-            updateLabelsForSecureEntry()
+            textFieldDidChange()
         }
     }
     
@@ -216,21 +216,6 @@ public class DigitEntryView: UIView {
                 ])
             }
         }
-        updateLabelsForSecureEntry()
-    }
-    
-    private func updateLabelsForSecureEntry() {
-        guard !labels.isEmpty else { return }
-
-        let enteredText = textField.text ?? ""
-        
-        for (index, label) in labels.enumerated() {
-            if index < enteredText.count {
-                label.text = isSecureEntity ? "•" : String(enteredText[enteredText.index(enteredText.startIndex, offsetBy: index)])
-            } else {
-                label.text = ""
-            }
-        }
     }
     
     public override func layoutSubviews() {
@@ -263,7 +248,7 @@ extension DigitEntryView: UITextFieldDelegate {
         }
         
         textField.text!.enumerated().forEach { index, character in
-            labels[index].text = isSecureEntity ? "•" : "\(character)"
+            labels[index].text = isSecureDigitEntry ? "•" : "\(character)"
         }
         
         if text.isEmpty {
