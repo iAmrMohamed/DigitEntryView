@@ -221,17 +221,14 @@ public class DigitEntryView: UIView {
     
     private func updateLabelsForSecureEntry() {
         guard !labels.isEmpty else { return }
+
         let enteredText = textField.text ?? ""
+        
         for (index, label) in labels.enumerated() {
-            if isSecureEntity, !enteredText.isEmpty {
-                label.text = "•"
-            } else if !enteredText.isEmpty {
-                let charIndex = enteredText.index(enteredText.startIndex, offsetBy: index)
-                if charIndex < enteredText.endIndex {
-                    label.text = String(enteredText[charIndex])
-                } else {
-                    label.text = ""
-                }
+            if index < enteredText.count {
+                label.text = isSecureEntity ? "•" : String(enteredText[enteredText.index(enteredText.startIndex, offsetBy: index)])
+            } else {
+                label.text = ""
             }
         }
     }
