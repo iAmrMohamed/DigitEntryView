@@ -28,14 +28,14 @@ class DemoViewController: UIViewController {
     private func configure(_ digitView: DigitEntryView) {
         digitView.numberOfDigits = numberOfDigits
         digitView.digitCornerStyle = .radius(5)
-        digitView.isSecureDigitEntry = true
+        digitView.isSecureEntity = true
         digitView.digitBorderColor = .lightGray
         digitView.nextDigitBorderColor = .blue
         digitView.digitColor = .black
     }
     
     @IBAction private func showPinCode(_ sender: UIButton) {
-        digitEntryView.isSecureDigitEntry.toggle()
+        digitEntryView.isSecureEntity.toggle()
     }
 
 
