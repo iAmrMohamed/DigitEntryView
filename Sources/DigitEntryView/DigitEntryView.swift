@@ -82,6 +82,13 @@ public class DigitEntryView: UIView {
         }
     }
     
+    /// isSecureEntity
+    public var isSecureEntity: Bool = false {
+        didSet {
+            updateLabelsForSecureEntry()
+        }
+    }
+    
     /// font of each digit
     public var digitFont: UIFont = .systemFont(ofSize: 17) {
         didSet {
@@ -199,6 +206,7 @@ public class DigitEntryView: UIView {
             return label
         }
         
+        
         if digitCornerStyle == .circle {
             let widthFactor = CGFloat(1.0) / CGFloat(numberOfDigits)
             labels.forEach {
@@ -206,6 +214,24 @@ public class DigitEntryView: UIView {
                     $0.widthAnchor.constraint(equalTo: $0.heightAnchor, multiplier: 1.0),
                     $0.heightAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: widthFactor, constant: -spacing)
                 ])
+            }
+        }
+        updateLabelsForSecureEntry()
+    }
+    
+    private func updateLabelsForSecureEntry() {
+        guard !labels.isEmpty else { return }
+        let enteredText = textField.text ?? ""
+        for (index, label) in labels.enumerated() {
+            if isSecureEntity, !enteredText.isEmpty {
+                label.text = "•"
+            } else if !enteredText.isEmpty {
+                let charIndex = enteredText.index(enteredText.startIndex, offsetBy: index)
+                if charIndex < enteredText.endIndex {
+                    label.text = String(enteredText[charIndex])
+                } else {
+                    label.text = ""
+                }
             }
         }
     }
@@ -240,7 +266,7 @@ extension DigitEntryView: UITextFieldDelegate {
         }
         
         textField.text!.enumerated().forEach { index, character in
-            labels[index].text = "\(character)"
+            labels[index].text = isSecureEntity ? "•" : "\(character)"
         }
         
         if text.isEmpty {
