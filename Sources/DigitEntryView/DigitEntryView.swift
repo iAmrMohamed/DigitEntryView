@@ -82,6 +82,12 @@ public class DigitEntryView: UIView {
         }
     }
     
+    public var isSecureDigitEntry: Bool = false {
+        didSet {
+            updateLabelsForSecureEntry()
+        }
+    }
+    
     /// font of each digit
     public var digitFont: UIFont = .systemFont(ofSize: 17) {
         didSet {
@@ -210,6 +216,13 @@ public class DigitEntryView: UIView {
         }
     }
     
+    private func updateLabelsForSecureEntry() {
+        guard !(textField.text?.isEmpty ?? true) else { return }
+        textField.text!.enumerated().forEach { index, character in
+            labels[index].text = isSecureDigitEntry ? "•" : "\(character)"
+        }
+    }
+        
     public override func layoutSubviews() {
         labels.forEach {
             $0.layoutIfNeeded()
@@ -240,7 +253,7 @@ extension DigitEntryView: UITextFieldDelegate {
         }
         
         textField.text!.enumerated().forEach { index, character in
-            labels[index].text = "\(character)"
+            labels[index].text = isSecureEntity ? "•" : "\(character)"
         }
         
         if text.isEmpty {
