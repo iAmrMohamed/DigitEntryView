@@ -83,7 +83,7 @@ public class DigitEntryView: UIView {
     }
     
     /// isSecureEntity
-    public var isSecureEntity: Bool = false {
+    public var isSecureDigitEntry: Bool = false {
         didSet {
             updateLabelsForSecureEntry()
         }
@@ -226,7 +226,7 @@ public class DigitEntryView: UIView {
         
         for (index, label) in labels.enumerated() {
             if index < enteredText.count {
-                label.text = isSecureEntity ? "•" : String(enteredText[enteredText.index(enteredText.startIndex, offsetBy: index)])
+                label.text = isSecureDigitEntry ? "•" : String(enteredText[enteredText.index(enteredText.startIndex, offsetBy: index)])
             } else {
                 label.text = ""
             }
@@ -263,7 +263,7 @@ extension DigitEntryView: UITextFieldDelegate {
         }
         
         textField.text!.enumerated().forEach { index, character in
-            labels[index].text = isSecureEntity ? "•" : "\(character)"
+            labels[index].text = isSecureDigitEntry ? "•" : "\(character)"
         }
         
         if text.isEmpty {
