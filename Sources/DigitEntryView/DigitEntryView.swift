@@ -220,17 +220,12 @@ public class DigitEntryView: UIView {
     }
     
     private func updateLabelsForSecureEntry() {
-        guard !labels.isEmpty else { return }
-
-        let enteredText = textField.text ?? ""
-        
-        for (index, label) in labels.enumerated() {
-            if index < enteredText.count {
-                label.text = isSecureDigitEntry ? "•" : String(enteredText[enteredText.index(enteredText.startIndex, offsetBy: index)])
-            } else {
-                label.text = ""
-            }
+        guard !(textField.text?.isEmpty ?? true) else { return }
+        textField.text!.enumerated().forEach { index, character in
+            labels[index].text = isSecureDigitEntry ? "•" : "\(character)"
         }
+        
+
     }
     
     public override func layoutSubviews() {
