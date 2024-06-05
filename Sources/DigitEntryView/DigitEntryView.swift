@@ -253,7 +253,7 @@ extension DigitEntryView: UITextFieldDelegate {
         }
         
         textField.text!.enumerated().forEach { index, character in
-            labels[index].text = isSecureEntity ? "•" : "\(character)"
+            labels[index].text = isSecureDigitEntry ? "•" : "\(character)"
         }
         
         if text.isEmpty {
